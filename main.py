@@ -18,7 +18,7 @@ TARGET_CHANNEL = "https://t.me/+RVVnazOHU2UzZTRh"  # channel tujuan
 START = 2300
 END = 5000
 
-PARALLEL_LIMIT = 5      # jumlah paralel download/compress/upload
+PARALLEL_LIMIT = 50      # jumlah paralel download/compress/upload
 COMPRESS_LIMIT_MB = 500 # compress jika > 500MB
 
 # ==============================
