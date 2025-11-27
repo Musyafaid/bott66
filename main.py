@@ -13,7 +13,7 @@ API_HASH = "c276aee836576d14cf89a1b96b94be65"    # ganti
 SESSION = "bot_session"
 
 CHANNEL_ID = -1002946957408   # channel source
-TARGET_CHANNEL = "https://t.me/+NTm_mzlfmdxkZGNh"  # channel tujuan
+TARGET_CHANNEL = "https://t.me/+RVVnazOHU2UzZTRh"  # channel tujuan
 
 START = 2300
 END = 5000
