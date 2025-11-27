@@ -2,7 +2,6 @@ import os
 import asyncio
 from telethon import TelegramClient
 from telethon.errors import FloodWaitError
-from telethon.tl.types import DocumentAttributeVideo
 from moviepy.editor import VideoFileClip
 
 # ==============================
@@ -23,7 +22,6 @@ COMPRESS_LIMIT_MB = 500 # compress jika > 500MB
 
 # ==============================
 client = TelegramClient(SESSION, API_ID, API_HASH)
-
 sem = asyncio.Semaphore(PARALLEL_LIMIT)
 
 
@@ -80,14 +78,13 @@ async def process_media(message):
                 final_path = compressed
 
             # ======================================
-            # UPLOAD
+            # UPLOAD TANPA CAPTION
             # ======================================
             try:
                 print(f"[UPLOAD] ID {message.id}")
                 await client.send_file(
                     TARGET_CHANNEL,
-                    final_path,
-                    caption=f"ID {message.id}"
+                    final_path
                 )
                 print(f"[DONE] ID {message.id} selesai upload!")
 
@@ -96,8 +93,7 @@ async def process_media(message):
                 await asyncio.sleep(e.seconds)
                 await client.send_file(
                     TARGET_CHANNEL,
-                    final_path,
-                    caption=f"ID {message.id}"
+                    final_path
                 )
 
             # Bersihkan file
@@ -142,7 +138,7 @@ async def start_range():
 # ======================================================
 async def main():
     await client.start()
-    print("BOT PARAREL RUNNING...")
+    print("BOT PARALLEL RUNNING...")
 
     await start_range()
 
@@ -150,4 +146,5 @@ async def main():
     await client.run_until_disconnected()
 
 
-client.loop.run_until_complete(main())
+if __name__ == "__main__":
+    client.loop.run_until_complete(main())
